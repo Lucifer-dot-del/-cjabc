@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>卢超凡 - 个人主页</title>
+    <style>
+      /* 全局样式重置与基础设置 */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Microsoft YaHei", "Inter", sans-serif;
+      }
+
+      body {
+        background-color: #f8f9fa;
+        color: #333;
+        line-height: 1.8;
+      }
+
+      /* 顶部导航栏 */
+      nav {
+        background-color: #2c3e50;
+        position: sticky;
+        top: 0;
+        z-index: 999;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 60px;
+      }
+
+      .nav-logo {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-decoration: none;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-menu li a {
+        color: white;
+        text-decoration: none;
+        font-size: 1rem;
+        opacity: 0.9;
+        transition: opacity 0.3s ease;
+      }
+
+      .nav-menu li a:hover {
+        opacity: 1;
+        border-bottom: 2px solid #3498db;
+      }
+
+      /* 容器通用样式 */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* 板块通用样式 */
+      .section {
+        padding: 4rem 0;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        color: #2c3e50;
+        margin-bottom: 2rem;
+        padding-bottom: 0.8rem;
+        border-bottom: 3px solid #3498db;
+        display: inline-block;
+      }
+
+      /* 关于我板块 */
+      .about-section {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        padding: 3rem;
+        margin-top: 2rem;
+        display: flex;
+        gap: 3rem;
+        align-items: center;
+      }
+
+      .about-avatar {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 5px solid #f1f1f1;
+        flex-shrink: 0;
+      }
+
+      .about-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .about-content h2 {
+        font-size: 1.8rem;
+        color: #2c3e50;
+        margin-bottom: 1rem;
+      }
+
+      .about-content .job {
+        color: #3498db;
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        font-weight: 500;
+      }
+
+      .about-content p {
+        color: #666;
+        margin-bottom: 1.5rem;
+        font-size: 1.05rem;
+      }
+
+      /* 布局优化：根据内容数量自动调整单/双栏 */
+      .layout-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        margin-top: 1rem;
+      }
+
+      /* 双栏布局（内容数量为偶数或需平衡时） */
+      .two-column {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+
+      /* 单栏布局（内容数量为1时） */
+      .one-column {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+
+      .card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        padding: 1.8rem;
+        transition: transform 0.3s ease;
+        /* 卡片高度自适应，内容多则自动增高 */
+        display: flex;
+        flex-direction: column;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
+      }
+
+      .card-title {
+        font-size: 1.3rem;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .card-subtitle {
+        color: #3498db;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+      }
+
+      .card-content {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        flex: 1; /* 让内容区域占满剩余空间，保证同排卡片高度一致 */
+      }
+
+      .card-content ul {
+        list-style: disc;
+        margin-left: 1.5rem;
+        margin-top: 0.5rem;
+      }
+
+      /* 技能与奖项板块：左右等宽布局，内容垂直对齐 */
+      .skills-awards {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        margin-top: 1rem;
+      }
+
+      .skills-container,
+      .awards-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+
+      .skills-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      .skill-tag {
+        background-color: #e3f2fd;
+        color: #2196f3;
+        padding: 0.6rem 1.2rem;
+        border-radius: 25px;
+        font-size: 0.95rem;
+        font-weight: 500;
+      }
+
+      .awards-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .award-item {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+
+      .award-icon {
+        color: #f1c40f;
+        font-size: 1.2rem;
+        margin-top: 0.3rem;
+      }
+
+      .award-content {
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      .award-level {
+        color: #e74c3c;
+        font-weight: 500;
+      }
+
+      /* 作品集板块：均衡网格布局，自动填充空白 */
+      .works-section {
+        background-color: #fafafa;
+      }
+
+      .works-category {
+        margin-bottom: 3rem;
+      }
+
+      .category-title {
+        font-size: 1.5rem;
+        color: #2c3e50;
+        margin: 0 0 1.5rem 0;
+        padding-left: 0.5rem;
+        border-left: 4px solid #3498db;
+      }
+
+      /* 公众号作品（1个）：单栏居中 */
+      .single-work {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* 公司图文（5个）：2+3网格布局，保证每行宽度一致 */
+      .five-works-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .five-works-grid .work-card:nth-child(5) {
+        grid-column: 1 / -1; /* 第5个作品占满整行 */
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* 视频作品（4个）：2列均匀分布 */
+      .four-videos-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .work-card,
+      .video-card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .work-card:hover,
+      .video-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* 核心修改：固定16:9比例封面容器 */
+      .work-img {
+        width: 100%;
+        /* 16:9比例核心：padding-top: 56.25%（9÷16=0.5625） */
+        padding-top: 56.25%;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative; /* 作为图片绝对定位的父容器 */
+        overflow: hidden; /* 隐藏超出比例的图片部分 */
+      }
+
+      /* 16:9封面图片适配 */
+      .work-img img,
+      .work-img .work-icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .work-img img {
+        object-fit: cover; /* 保持宽高比，铺满16:9容器，无变形 */
+        object-position: center; /* 核心内容居中，避免关键信息被裁剪 */
+      }
+
+      .work-icon {
+        font-size: 3rem;
+        color: #3498db;
+      }
+
+      .work-content {
+        padding: 1.5rem;
+        flex: 1; /* 内容区域自适应高度，保证同排卡片齐平 */
+      }
+
+      .work-title {
+        font-size: 1.2rem;
+        color: #2c3e50;
+        margin-bottom: 0.8rem;
+      }
+
+      .work-desc {
+        font-size: 0.95rem;
+        color: #666;
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .work-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .work-tag {
+        background-color: #e8f5e9;
+        color: #2e7d32;
+        padding: 0.3rem 0.8rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+      }
+
+      .link-btn {
+        display: inline-block;
+        background-color: #3498db;
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        text-decoration: none;
+        font-size: 0.9rem;
+        transition: background-color 0.3s ease;
+      }
+
+      .link-btn:hover {
+        background-color: #2980b9;
+      }
+
+      /* 视频作品样式：同步16:9比例 */
+      .video-container {
+        width: 100%;
+        padding-top: 56.25%; /* 同步16:9比例，与图片封面保持一致 */
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .video-container video,
+      .video-container .play-btn {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .video-container video {
+        object-fit: cover; /* 视频适配16:9容器，无变形 */
+      }
+
+      .play-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        background-color: rgba(52, 152, 219, 0.8);
+        color: white;
+        font-size: 1.5rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        margin: auto; /* 播放按钮居中 */
+        z-index: 1;
+      }
+
+      .play-btn:hover {
+        background-color: rgba(41, 128, 185, 0.9);
+      }
+
+      /* 联系方式板块 */
+      .contact-section {
+        background-color: #2c3e50;
+        color: white;
+        text-align: center;
+        padding: 4rem 0;
+      }
+
+      .contact-section .section-title {
+        color: white;
+        border-bottom-color: #3498db;
+        margin-bottom: 2.5rem;
+      }
+
+      .contact-list {
+        list-style: none;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .contact-list li {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 1.1rem;
+      }
+
+      .contact-icon {
+        font-size: 1.3rem;
+        color: #3498db;
+      }
+
+      .contact-list a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .contact-list a:hover {
+        color: #3498db;
+      }
+
+      /* 页脚 */
+      footer {
+        background-color: #1a252f;
+        color: white;
+        text-align: center;
+        padding: 1.5rem 0;
+        font-size: 0.95rem;
+        opacity: 0.8;
+      }
+
+      /* 响应式适配 */
+      @media (max-width: 992px) {
+        .about-section {
+          flex-direction: column;
+          text-align: center;
+          padding: 2rem;
+        }
+
+        .skills-awards,
+        .two-column,
+        .five-works-grid,
+        .four-videos-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .five-works-grid .work-card:nth-child(5) {
+          grid-column: auto;
+          max-width: none;
+          margin: 0;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .nav-container {
+          flex-direction: column;
+          height: auto;
+          padding: 1rem 0;
+        }
+
+        .nav-menu {
+          margin-top: 1rem;
+          gap: 1rem;
+        }
+
+        .section {
+          padding: 2.5rem 0;
+        }
+
+        .section-title {
+          font-size: 1.7rem;
+        }
+      }
+
+      @media (max-width: 576px) {
+        .about-avatar {
+          width: 150px;
+          height: 150px;
+        }
+
+        .contact-list {
+          flex-direction: column;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .card-title {
+          font-size: 1.2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 导航栏 -->
+    <nav>
+      <div class="nav-container">
+        <a href="#" class="nav-logo">卢超凡</a>
+        <ul class="nav-menu">
+          <li><a href="#about">关于我</a></li>
+          <li><a href="#education">教育经历</a></li>
+          <li><a href="#experience">工作实习</a></li>
+          <li><a href="#projects">项目经验</a></li>
+          <li><a href="#skills">技能奖项</a></li>
+          <li><a href="#works">作品集</a></li>
+          <li><a href="#contact">联系方式</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- 关于我板块 -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="about-section">
+          <div class="about-avatar">
+            <!-- 替换为你的个人照片（建议正方形图片） -->
+            <img
+              src="http://youke.xn--y7xa690gmna.cn/s1/2026/01/19/696e234cf0182.webp"
+              alt="卢超凡个人照片"
+            />
+          </div>
+          <div class="about-content">
+            <h2>卢超凡</h2>
+            <div class="job">求职意向：实习生 | AI技术与媒体制作融合方向</div>
+            <p>
+              对AI技术与媒体制作的融合充满热情。凭借扎实的汉语言文学专业背景和多次跨媒介内容实践，能够从叙事与传播的角度理解创作，同时通过AIGC标注、非遗数字化等项目，积累了AI辅助内容生成与处理的直接经验，并有2篇大模型评测论文入选国际会议。
+            </p>
+            <p>
+              善于学习，乐于探索技术如何赋能创意表达，能实习三个月以上，期待能在实战中进一步成长。
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 教育经历板块（1个内容：单栏布局） -->
+    <section id="education" class="section">
+      <div class="container">
+        <h2 class="section-title">教育经历</h2>
+        <div class="layout-container one-column">
+          <div class="card">
+            <div class="card-title">
+              <span>常州大学 · 周有光文学院</span>
+              <span>2022.09 - 2026.06</span>
+            </div>
+            <div class="card-subtitle">汉语言文学（本科）</div>
+            <div class="card-content">
+              <p>
+                核心课程：语言学概论、现代汉语、古代汉语、中国古代/现当代文学、外国文学
+              </p>
+              <ul>
+                <li>校级五四青年学生奖（文体先锋提名奖）</li>
+                <li>校级三等奖学金、文化艺术单项奖</li>
+                <li>2025年度大学生创新训练计划国家级推荐</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 工作实习板块（2个内容：双栏布局） -->
+    <section id="experience" class="section">
+      <div class="container">
+        <h2 class="section-title">工作实习</h2>
+        <div class="layout-container two-column">
+          <div class="card">
+            <div class="card-title">
+              <span>澳鹏科技无锡有限公司</span>
+              <span>2024.07 - 2024.08</span>
+            </div>
+            <div class="card-subtitle">中文AIGC · 实习生</div>
+            <div class="card-content">
+              <ul>
+                <li>
+                  参与小红书平台AIGC数据标注项目，负责超1万条文本的清洗、归类，标注准确率超90%
+                </li>
+                <li>
+                  系统化处理高量级语言数据，深入理解AI生成内容的特征与优化逻辑
+                </li>
+                <li>强化AI辅助内容生成与处理的实操认知与数据处理能力</li>
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">
+              <span>苏州博创品牌营销策划有限公司</span>
+              <span>2023.07 - 2023.08</span>
+            </div>
+            <div class="card-subtitle">新媒体部 · 实习生</div>
+            <div class="card-content">
+              <ul>
+                <li>
+                  负责企业新媒体账号日常运营与内容创作，独立撰写发布5篇推文，提升品牌曝光与互动
+                </li>
+                <li>
+                  参与本地文旅宣传项目，协助完成金鸡湖街道旅游推广文案撰写与优化
+                </li>
+                <li>
+                  协助商业宣传片拍摄的道具协调与灯光调试，保障成片顺利交付
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 项目经验板块（2个内容：双栏布局） -->
+    <section id="projects" class="section">
+      <div class="container">
+        <h2 class="section-title">项目经验</h2>
+        <div class="layout-container two-column">
+          <div class="card">
+            <div class="card-title">
+              <span>白龙还乡——非遗文化数字化研究项目</span>
+              <span>2023.01 - 2024.06</span>
+            </div>
+            <div class="card-subtitle">项目负责人</div>
+            <div class="card-content">
+              <ul>
+                <li>
+                  围绕常州金坛“白龙娘娘传说”与国家级非遗“巨村舞龙”开展交叉研究，完成文献梳理与研究框架设计
+                </li>
+                <li>
+                  运用AI文本分析及数据可视化技术处理研究资料，提升文献整理与分析效率约40%
+                </li>
+                <li>
+                  项目获市级表彰，初步具备文化内容与数字技术结合的实践能力
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-title">
+              <span>常州大学菁莪社·有光文学社</span>
+              <span>2024.06 - 2024.12</span>
+            </div>
+            <div class="card-subtitle">联合创始人 / 社长</div>
+            <div class="card-content">
+              <ul>
+                <li>
+                  组建跨学科学术交流社团，招募文、理、工多学科核心成员30余人，制定社团章程与活动框架
+                </li>
+                <li>
+                  推动社团发展为院级正式组织，策划主持主题研讨会、读书交流会等3场活动，单场平均参与超30人
+                </li>
+                <li>
+                  争取校方场地、经费等资源支持，积累从0到1的内容策划与团队运营经验
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 技能与奖项板块（左右等宽，内容垂直对齐） -->
+    <section id="skills" class="section">
+      <div class="container">
+        <h2 class="section-title">技能与奖项</h2>
+        <div class="skills-awards">
+          <div class="skills-container">
+            <h3 style="color: #2c3e50; margin-bottom: 1rem">专业技能</h3>
+            <div class="skills-list">
+              <span class="skill-tag">Pr/AE 熟练使用</span>
+              <span class="skill-tag">小红书/知乎/抖音运营</span>
+              <span class="skill-tag">AIGC 应用</span>
+              <span class="skill-tag">文案策划</span>
+              <span class="skill-tag">内容创作</span>
+              <span class="skill-tag">数据标注与处理</span>
+              <span class="skill-tag">AI文本分析</span>
+              <span class="skill-tag">跨媒介内容制作</span>
+            </div>
+
+            <h3 style="color: #2c3e50; margin: 2rem 0 1rem">证书资质</h3>
+            <div class="skills-list">
+              <span class="skill-tag">CET-6（优秀听说写）</span>
+              <span class="skill-tag">普通话二级甲等</span>
+              <span class="skill-tag">舞龙舞狮国家二级裁判员</span>
+              <span class="skill-tag">C1驾照（熟练驾驶）</span>
+            </div>
+          </div>
+          <div class="awards-container">
+            <h3 style="color: #2c3e50; margin-bottom: 1rem">获奖经历</h3>
+            <div class="awards-list">
+              <div class="award-item">
+                <span class="award-icon">🏆</span>
+                <div class="award-content">
+                  <span class="award-level">国家级</span
+                  >：第十四届全国舞龙舞狮锦标赛一等奖
+                </div>
+              </div>
+              <div class="award-item">
+                <span class="award-icon">🏆</span>
+                <div class="award-content">
+                  <span class="award-level">国家级</span>：国家三等奖学金
+                </div>
+              </div>
+              <div class="award-item">
+                <span class="award-icon">🏆</span>
+                <div class="award-content">
+                  <span class="award-level">省级</span
+                  >：“译林杯”第六届江苏省青年科普科幻作品大赛（AI科幻赛道）一等奖
+                </div>
+              </div>
+              <div class="award-item">
+                <span class="award-icon">🏆</span>
+                <div class="award-content">
+                  <span class="award-level">省级</span
+                  >：全国大学生广告艺术大赛江苏省三等奖
+                </div>
+              </div>
+              <div class="award-item">
+                <span class="award-icon">🏆</span>
+                <div class="award-content">
+                  <span class="award-level">省级</span
+                  >：中国大学生计算机设计大赛江苏省优胜奖
+                </div>
+              </div>
+              <div class="award-item">
+                <span class="award-icon">📄</span>
+                <div class="award-content">
+                  论文录用：《大语言模型英诗汉译能力测评研究》（国家级学术研讨会）
+                </div>
+              </div>
+              <div class="award-item">
+                <span class="award-icon">📄</span>
+                <div class="award-content">
+                  论文录用：《大模型英诗汉译生成与评估应用体系研究》（国际会议）
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 作品集板块（按数量优化布局） -->
+    <section id="works" class="section works-section">
+      <div class="container">
+        <h2 class="section-title">作品集</h2>
+
+        <!-- 公众号作品（1个：单栏居中） -->
+        <div class="works-category">
+          <h3 class="category-title">公众号作品</h3>
+          <div class="layout-container one-column single-work">
+            <div class="work-card">
+              <div class="work-img">
+                <img
+                  src="http://youke.xn--y7xa690gmna.cn/s1/2026/01/19/696e245a58be7.webp"
+                  alt="公众号封面"
+                />
+              </div>
+              <div class="work-content">
+                <h3 class="work-title">回到常大，他们发了第一条朋友圈~</h3>
+                <p class="work-desc">
+                  常州大学官方公众号发布，记录开学季校园生活，涵盖操场锻炼、食堂美食、学习备考等场景，传递新学期活力。
+                </p>
+                <div class="work-tags">
+                  <span class="work-tag">校园公众号</span>
+                  <span class="work-tag">生活记录</span>
+                  <span class="work-tag">开学季</span>
+                </div>
+                <a
+                  href="https://mp.weixin.qq.com/s/AxIDPiiYKJCWFeitBuMvmQ"
+                  target="_blank"
+                  class="link-btn"
+                  >查看原文</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 公司图文作品（5个：2+3均衡布局） -->
+        <div class="works-category">
+          <h3 class="category-title">公司图文作品</h3>
+          <div class="five-works-grid">
+            <div class="work-card">
+              <div class="work-img">
+                <img
+                  src="https://customer-service.visualchina.com/storageAdapter/api/v1/download?fileKey=imcc/10001/2026-01-19/2026-01-19_182615157_59715036349757817194109.jpg"
+                  alt="草间弥生"
+                />
+              </div>
+              <div class="work-content">
+                <h3 class="work-title">住在精神病院的艺术家——草间弥生</h3>
+                <p class="work-desc">
+                  解析日本波普艺术家草间弥生的创作风格、波点元素与和平主义思想，介绍其艺术成就与行业影响。
+                </p>
+                <div class="work-tags">
+                  <span class="work-tag">艺术家分享</span>
+                  <span class="work-tag">波普艺术</span>
+                  <span class="work-tag">艺术解析</span>
+                </div>
+                <a
+                  href="http://xhslink.com/o/4TGHvYk1w7M"
+                  target="_blank"
+                  class="link-btn"
+                  >查看原文</a
+                >
+              </div>
+            </div>
+            <div class="work-card">
+              <div class="work-img">
+                <img
+                  src="http://youke.xn--y7xa690gmna.cn/s1/2026/01/19/696e234de56e6.webp"
+                  alt="村上隆"
+                />
+              </div>
+              <div class="work-content">
+                <h3 class="work-title">将艺术拉下圣坛的艺术家——村上隆</h3>
+                <p class="work-desc">
+                  解读“超扁平化”艺术理念，分析村上隆在艺术与商业的跨界成就，探讨其作品的争议性与影响力。
+                </p>
+                <div class="work-tags">
+                  <span class="work-tag">商业艺术</span>
+                  <span class="work-tag">超扁平风</span>
+                  <span class="work-tag">艺术家分享</span>
+                </div>
+                <a
+                  href="http://xhslink.com/o/AskaoKEeA3e"
+                  target="_blank"
+                  class="link-btn"
+                  >查看原文</a
+                >
+              </div>
+            </div>
+            <div class="work-card">
+              <div class="work-img">
+                <img
+                  src="http://youke.xn--y7xa690gmna.cn/s1/2026/01/19/696e234dc9551.webp"
+                  alt="不靠谱的领导"
+                />
+              </div>
+              <div class="work-content">
+                <h3 class="work-title">《芭比》——对男权社会的辛辣讽刺</h3>
+                <p class="work-desc">
+                  通过男女观众评价差异，分析电影性别平权主题，探讨社会中男女地位的深层问题。
+                </p>
+                <div class="work-tags">
+                  <span class="work-tag">电影评论</span>
+                  <span class="work-tag">性别平权</span>
+                  <span class="work-tag">社会议题</span>
+                </div>
+                <a
+                  href="http://xhslink.com/o/547TrDI5D3L"
+                  target="_blank"
+                  class="link-btn"
+                  >查看原文</a
+                >
+              </div>
+            </div>
+            <div class="work-card">
+              <div class="work-img">
+                <img
+                  src="http://youke.xn--y7xa690gmna.cn/s1/2026/01/19/696e234dad631.webp"
+                  alt="不靠谱的领导"
+                />
+              </div>
+              <div class="work-content">
+                <h3 class="work-title">创意广告|不靠谱的领导有多可怕?</h3>
+                <p class="work-desc">
+                  分享泰国沙雕创意广告，聚焦职场痛点，展现“打工人跟对领导”的重要性，风格真实有趣。
+                </p>
+                <div class="work-tags">
+                  <span class="work-tag">创意广告</span>
+                  <span class="work-tag">职场话题</span>
+                  <span class="work-tag">趣味内容</span>
+                </div>
+                <a
+                  href="http://xhslink.com/o/A0DqZLPe1I6"
+                  target="_blank"
+                  class="link-btn"
+                  >查看原文</a
+                >
+              </div>
+            </div>
+            <div class="work-card">
+              <div class="work-img">
+                <img
+                  src="http://youke.xn--y7xa690gmna.cn/s1/2026/01/19/696e234dc6209.webp"
+                  alt="夏日降温"
+                />
+              </div>
+              <div class="work-content">
+                <h3 class="work-title">创意广告|夏日降温方式图鉴</h3>
+                <p class="work-desc">
+                  以“泰热辣”为主题的创意广告，分享夏日降温趣味方式，风格活泼贴近生活。
+                </p>
+                <div class="work-tags">
+                  <span class="work-tag">创意广告</span>
+                  <span class="work-tag">夏日主题</span>
+                  <span class="work-tag">趣味内容</span>
+                </div>
+                <a
+                  href="http://xhslink.com/o/5Zr6ICdIjI6"
+                  target="_blank"
+                  class="link-btn"
+                  >查看原文</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!-- 视频作品（5个：优化网格布局，保证视觉均衡） -->
+<div class="works-category">
+  <h3 class="category-title">视频作品</h3>
+  <!-- 把原four-videos-grid改为five-videos-grid，优化5个视频的布局 -->
+  <div class="four-videos-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
+    <div class="video-card">
+      <div class="video-container">
+        <video
+          controls
+          poster="http://youke.xn--y7xa690gmna.cn/s1/2026/01/19/696e254da9257.webp"
+        >
+          <source
+            src="https://file.icve.com.cn/file_doc/qdqqd/4131767275900792.mp4"
+            type="video/mp4"
+          />
+          您的浏览器不支持HTML5视频播放
+        </video>
+      </div>
+      <div class="work-content">
+        <h3 class="work-title">念奴娇·过洞庭</h3>
+        <p class="work-desc">
+          古诗词微课，运用Pr/AE完成剪辑与后期制作，结合镜头语言实现寓教于乐。
+        </p>
+        <div class="work-tags">
+          <span class="work-tag">视频创作</span>
+          <span class="work-tag">Pr/AE</span>
+          <span class="work-tag">文旅宣传</span>
+        </div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-container">
+        <video
+          controls
+          poster="http://youke.xn--y7xa690gmna.cn/s1/2026/01/19/696e254e12ee3.webp"
+        >
+          <source
+            src="https://file.icve.com.cn/file_doc/qdqqd/7591767276293151.mp4"
+            type="video/mp4"
+          />
+          您的浏览器不支持HTML5视频播放
+        </video>
+      </div>
+      <div class="work-content">
+        <h3 class="work-title">拿下甲方，不成问题</h3>
+        <p class="work-desc">
+          创意广告短片，通过趣味剧情传递品牌理念，后期添加特效提升视觉表现力。
+        </p>
+        <div class="work-tags">
+          <span class="work-tag">视频创作</span>
+          <span class="work-tag">后期制作</span>
+          <span class="work-tag">创意广告</span>
+        </div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-container">
+        <video
+          controls
+          poster="http://youke.xn--y7xa690gmna.cn/s1/2026/01/19/696e254e3ef1a.webp"
+        >
+          <source
+            src="https://file.icve.com.cn/file_doc/qdqqd/7671768185823655.mp4"
+            type="video/mp4"
+          />
+          您的浏览器不支持HTML5视频播放
+        </video>
+      </div>
+      <div class="work-content">
+        <h3 class="work-title">做设计，用即时</h3>
+        <p class="work-desc">
+          非遗文化宣传视频，记录“巨村舞龙”表演，运用AI辅助剪辑提升内容传播力。
+        </p>
+        <div class="work-tags">
+          <span class="work-tag">视频创作</span>
+          <span class="work-tag">文化传播</span>
+          <span class="work-tag">AI辅助</span>
+        </div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-container">
+        <video
+          controls
+          <!-- 统一封面风格，替换原SVG占位图为和其他视频一致的封面格式（这里复用同域名封面，你可后续替换为专属封面） -->
+          poster="http://youke.xn--y7xa690gmna.cn/s1/2026/01/19/696e254e6c87f.webp"
+        >
+          <source
+            src="https://file.icve.com.cn/file_doc/qdqqd/8601768185907857.mp4"
+            type="video/mp4"
+          />
+          您的浏览器不支持HTML5视频播放
+        </video>
+      </div>
+      <div class="work-content">
+        <h3 class="work-title">青春留常，逐梦远航</h3>
+        <p class="work-desc">
+          校园活动记录视频，捕捉学术研讨会精彩瞬间，后期调色统一视觉风格。
+        </p>
+        <div class="work-tags">
+          <span class="work-tag">视频创作</span>
+          <span class="work-tag">活动记录</span>
+          <span class="work-tag">后期调色</span>
+        </div>
+      </div>
+    </div>
+    <div class="video-card" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto;">
+      <div class="video-container">
+        <video
+          controls
+          <!-- 统一封面风格，添加专属封面（你可后续替换为实际封面URL） -->
+          poster="http://youke.xn--y7xa690gmna.cn/s1/2026/01/19/696e254de9f46.webp"
+        >
+          <source
+            src="https://file.icve.com.cn/file_doc/qdqqd/8071768827439266.mp4"
+            type="video/mp4"
+          />
+          您的浏览器不支持HTML5视频播放
+        </video>
+      </div>
+      <div class="work-content">
+        <h3 class="work-title">画梦</h3>
+        <p class="work-desc">
+          补充视频内容，延续统一的制作风格，运用专业剪辑工具完成后期优化，提升内容传播价值。
+        </p>
+        <div class="work-tags">
+          <span class="work-tag">视频创作</span>
+          <span class="work-tag">专业剪辑</span>
+          <span class="work-tag">内容传播</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    <!-- 联系方式板块 -->
+    <section id="contact" class="contact-section">
+      <div class="container">
+        <h2 class="section-title">联系方式</h2>
+        <ul class="contact-list">
+          <li>
+            <span class="contact-icon">📞</span>
+            <span>电话：195 1670 9932</span>
+          </li>
+          <li>
+            <span class="contact-icon">📧</span>
+            <span
+              >邮箱：<a href="mailto:19516709932@163.com"
+                >19516709932@163.com</a
+              ></span
+            >
+          </li>
+          <li>
+            <span class="contact-icon">📍</span>
+            <span>现居：江苏常州</span>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer>
+      <p>© 2026 卢超凡 - 个人主页 | 感谢浏览</p>
+    </footer>
+
+    <script>
+      // 视频播放按钮逻辑
+      document.querySelectorAll(".play-btn").forEach((btn) => {
+        const video = btn.previousElementSibling;
+        btn.addEventListener("click", () => {
+          video.play();
+          btn.style.display = "none";
+        });
+        video.addEventListener("pause", () => {
+          btn.style.display = "flex";
+        });
+        video.addEventListener("ended", () => {
+          btn.style.display = "flex";
+        });
+      });
+
+      // 平滑滚动
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute("href")).scrollIntoView({
+            behavior: "smooth",
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
