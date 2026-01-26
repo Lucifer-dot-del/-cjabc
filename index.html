@@ -294,8 +294,8 @@
         margin: 0 auto;
       }
 
-      /* 视频作品（4个）：2列均匀分布 */
-      .four-videos-grid {
+      /* 视频作品（6个）：统一2列网格布局 */
+      .video-works-grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 1.5rem;
@@ -513,7 +513,7 @@
         .skills-awards,
         .two-column,
         .five-works-grid,
-        .four-videos-grid {
+        .video-works-grid {
           grid-template-columns: 1fr;
         }
 
@@ -978,140 +978,170 @@
           </div>
         </div>
 
-<!-- 视频作品（5个：优化网格布局，保证视觉均衡） -->
-<div class="works-category">
-  <h3 class="category-title">视频作品</h3>
-  <!-- 把原four-videos-grid改为five-videos-grid，优化5个视频的布局 -->
-  <div class="four-videos-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
-    <div class="video-card">
-      <div class="video-container">
-        <video
-          controls
-          poster="https://i.ibb.co/Pv5pr8c5/frame-at-0m0s.jpg"
-        >
-          <source
-            src="https://file.icve.com.cn/file_doc/qdqqd/4131767275900792.mp4"
-            type="video/mp4"
-          />
-          您的浏览器不支持HTML5视频播放
-        </video>
-      </div>
-      <div class="work-content">
-        <h3 class="work-title">念奴娇·过洞庭</h3>
-        <p class="work-desc">
-          古诗词微课，运用Pr/AE完成剪辑与后期制作，结合镜头语言实现寓教于乐。
-        </p>
-        <div class="work-tags">
-          <span class="work-tag">视频创作</span>
-          <span class="work-tag">Pr/AE</span>
-          <span class="work-tag">文旅宣传</span>
+        <!-- 视频作品（6个：统一2列网格布局） -->
+        <div class="works-category">
+          <h3 class="category-title">视频作品</h3>
+          <div class="video-works-grid">
+            <!-- 第1个视频 -->
+            <div class="video-card">
+              <div class="video-container">
+                <video
+                  controls
+                  poster="https://i.ibb.co/Pv5pr8c5/frame-at-0m0s.jpg"
+                >
+                  <source
+                    src="https://file.icve.com.cn/file_doc/qdqqd/4131767275900792.mp4"
+                    type="video/mp4"
+                  />
+                  您的浏览器不支持HTML5视频播放
+                </video>
+              </div>
+              <div class="work-content">
+                <h3 class="work-title">念奴娇·过洞庭</h3>
+                <p class="work-desc">
+                  古诗词微课，运用Pr/AE完成剪辑与后期制作，结合镜头语言实现寓教于乐。
+                </p>
+                <div class="work-tags">
+                  <span class="work-tag">视频创作</span>
+                  <span class="work-tag">Pr/AE</span>
+                  <span class="work-tag">文旅宣传</span>
+                </div>
+              </div>
+            </div>
+            <!-- 第2个视频 -->
+            <div class="video-card">
+              <div class="video-container">
+                <video
+                  controls
+                  poster="https://i.ibb.co/V0R8jMtM/3-frame-at-0m1s.jpg"
+                >
+                  <source
+                    src="https://file.icve.com.cn/file_doc/qdqqd/7591767276293151.mp4"
+                    type="video/mp4"
+                  />
+                  您的浏览器不支持HTML5视频播放
+                </video>
+              </div>
+              <div class="work-content">
+                <h3 class="work-title">拿下甲方，不成问题</h3>
+                <p class="work-desc">
+                  创意广告短片，通过趣味剧情传递品牌理念，后期添加特效提升视觉表现力。
+                </p>
+                <div class="work-tags">
+                  <span class="work-tag">视频创作</span>
+                  <span class="work-tag">后期制作</span>
+                  <span class="work-tag">创意广告</span>
+                </div>
+              </div>
+            </div>
+            <!-- 第3个视频 -->
+            <div class="video-card">
+              <div class="video-container">
+                <video
+                  controls
+                  poster="https://i.ibb.co/mC4PNQJs/30s.jpg"
+                >
+                  <source
+                    src="https://file.icve.com.cn/file_doc/qdqqd/7671768185823655.mp4"
+                    type="video/mp4"
+                  />
+                  您的浏览器不支持HTML5视频播放
+                </video>
+              </div>
+              <div class="work-content">
+                <h3 class="work-title">做设计，用即时</h3>
+                <p class="work-desc">
+                  大广赛作品，创意广告短片，为即时设计作简短广告宣传。
+                </p>
+                <div class="work-tags">
+                  <span class="work-tag">视频创作</span>
+                  <span class="work-tag">文化传播</span>
+                  <span class="work-tag">AI辅助</span>
+                </div>
+              </div>
+            </div>
+            <!-- 第4个视频 -->
+            <div class="video-card">
+              <div class="video-container">
+                <video
+                  controls
+                  poster="https://i.ibb.co/jPQRdH4b/frame-at-0m0s.jpg"
+                >
+                  <source
+                    src="https://file.icve.com.cn/file_doc/qdqqd/8601768185907857.mp4"
+                    type="video/mp4"
+                  />
+                  您的浏览器不支持HTML5视频播放
+                </video>
+              </div>
+              <div class="work-content">
+                <h3 class="work-title">青春留常，逐梦远航</h3>
+                <p class="work-desc">
+                  创意短片，为常州市“青春留常”政策作宣传。
+                </p>
+                <div class="work-tags">
+                  <span class="work-tag">视频创作</span>
+                  <span class="work-tag">活动记录</span>
+                  <span class="work-tag">后期调色</span>
+                </div>
+              </div>
+            </div>
+            <!-- 第5个视频（取消full-width，和其他视频同尺寸） -->
+            <div class="video-card">
+              <div class="video-container">
+                <video
+                  controls
+                  poster="https://i.ibb.co/HLHzKqDQ/frame-at-0m1s.jpg"
+                >
+                  <source
+                    src="https://file.icve.com.cn/file_doc/qdqqd/8071768827439266.mp4"
+                    type="video/mp4"
+                  />
+                  您的浏览器不支持HTML5视频播放
+                </video>
+              </div>
+              <div class="work-content">
+                <h3 class="work-title">画梦</h3>
+                <p class="work-desc">
+                  校内MV比赛作品，多场景、人物表现追求梦想的主题。
+                </p>
+                <div class="work-tags">
+                  <span class="work-tag">视频创作</span>
+                  <span class="work-tag">专业剪辑</span>
+                  <span class="work-tag">内容传播</span>
+                </div>
+              </div>
+            </div>
+            <!-- 第6个视频（取消full-width，和其他视频同尺寸） -->
+            <div class="video-card">
+              <div class="video-container">
+                <video
+                  controls
+                  poster="https://i.ibb.co/FbTsP2FS/1.jpg"
+                >
+                  <source
+                    src="https://file.icve.com.cn/file_doc/qdqqd/7971769408771710.mp4"
+                    type="video/mp4"
+                  />
+                  您的浏览器不支持HTML5视频播放
+                </video>
+              </div>
+              <div class="work-content">
+                <h3 class="work-title">我们的三年</h3>
+                <p class="work-desc">
+                  苏州天成实验学校高考誓师视频，为临考学子们鼓舞士气。
+                </p>
+                <div class="work-tags">
+                  <span class="work-tag">视频创作</span>
+                  <span class="work-tag">专业剪辑</span>
+                  <span class="work-tag">内容传播</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="video-card">
-      <div class="video-container">
-        <video
-          controls
-          poster="https://i.ibb.co/V0R8jMtM/3-frame-at-0m1s.jpg"
-        >
-          <source
-            src="https://file.icve.com.cn/file_doc/qdqqd/7591767276293151.mp4"
-            type="video/mp4"
-          />
-          您的浏览器不支持HTML5视频播放
-        </video>
-      </div>
-      <div class="work-content">
-        <h3 class="work-title">拿下甲方，不成问题</h3>
-        <p class="work-desc">
-          创意广告短片，通过趣味剧情传递品牌理念，后期添加特效提升视觉表现力。
-        </p>
-        <div class="work-tags">
-          <span class="work-tag">视频创作</span>
-          <span class="work-tag">后期制作</span>
-          <span class="work-tag">创意广告</span>
-        </div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-container">
-        <video
-          controls
-          poster="https://i.ibb.co/mC4PNQJs/30s.jpg"
-        >
-          <source
-            src="https://file.icve.com.cn/file_doc/qdqqd/7671768185823655.mp4"
-            type="video/mp4"
-          />
-          您的浏览器不支持HTML5视频播放
-        </video>
-      </div>
-      <div class="work-content">
-        <h3 class="work-title">做设计，用即时</h3>
-        <p class="work-desc">
-          大广赛作品，创意广告短片，为即时设计作简短广告宣传。
-        </p>
-        <div class="work-tags">
-          <span class="work-tag">视频创作</span>
-          <span class="work-tag">文化传播</span>
-          <span class="work-tag">AI辅助</span>
-        </div>
-      </div>
-    </div>
-    <div class="video-card">
-      <div class="video-container">
-        <video
-          controls
-          <!-- 统一封面风格，替换原SVG占位图为和其他视频一致的封面格式（这里复用同域名封面，你可后续替换为专属封面） -->
-          poster="https://i.ibb.co/jPQRdH4b/frame-at-0m0s.jpg"
-        >
-          <source
-            src="https://file.icve.com.cn/file_doc/qdqqd/8601768185907857.mp4"
-            type="video/mp4"
-          />
-          您的浏览器不支持HTML5视频播放
-        </video>
-      </div>
-      <div class="work-content">
-        <h3 class="work-title">青春留常，逐梦远航</h3>
-        <p class="work-desc">
-          创意短片，为常州市“青春留常”政策作宣传。
-        </p>
-        <div class="work-tags">
-          <span class="work-tag">视频创作</span>
-          <span class="work-tag">活动记录</span>
-          <span class="work-tag">后期调色</span>
-        </div>
-      </div>
-    </div>
-    <div class="video-card" style="grid-column: 1 / -1; max-width: 600px; margin: 0 auto;">
-      <div class="video-container">
-        <video
-          controls
-          <!-- 统一封面风格，添加专属封面（你可后续替换为实际封面URL） -->
-          poster="https://i.ibb.co/HLHzKqDQ/frame-at-0m1s.jpg"
-        >
-          <source
-            src="https://file.icve.com.cn/file_doc/qdqqd/8071768827439266.mp4"
-            type="video/mp4"
-          />
-          您的浏览器不支持HTML5视频播放
-        </video>
-      </div>
-      <div class="work-content">
-        <h3 class="work-title">画梦</h3>
-        <p class="work-desc">
-          校内MV比赛作品，多场景、人物表现追求梦想的主题。
-        </p>
-        <div class="work-tags">
-          <span class="work-tag">视频创作</span>
-          <span class="work-tag">专业剪辑</span>
-          <span class="work-tag">内容传播</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+    </section>
 
     <!-- 联系方式板块 -->
     <section id="contact" class="contact-section">
@@ -1144,7 +1174,7 @@
     </footer>
 
     <script>
-      // 视频播放按钮逻辑
+      // 视频播放按钮逻辑（当前代码中无play-btn，保留备用）
       document.querySelectorAll(".play-btn").forEach((btn) => {
         const video = btn.previousElementSibling;
         btn.addEventListener("click", () => {
