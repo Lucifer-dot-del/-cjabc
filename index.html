@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
@@ -301,6 +301,44 @@
         gap: 1.5rem;
       }
 
+      /* 文字作品网格布局（双栏）+ 精简小卡片样式 */
+      .text-works-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+      }
+
+      .text-card {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        /* 核心修改：缩小卡片内边距 */
+        padding: 1rem;
+        min-height: auto;
+      }
+
+      .text-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* 文字作品内容区：精简内边距 */
+      .text-content {
+        padding: 0.5rem;
+        flex: 1;
+      }
+
+      /* 文字作品标题：缩小字号+减少间距 */
+      .text-title {
+        font-size: 1rem;
+        color: #2c3e50;
+        margin-bottom: 0.5rem;
+      }
+
       .work-card,
       .video-card {
         background-color: white;
@@ -380,8 +418,8 @@
       }
 
       .work-tag {
-        background-color: #e8f5e9;
-        color: #2e7d32;
+        background-color: #f3e5f5;
+        color: #7b1fa2;
         padding: 0.3rem 0.8rem;
         border-radius: 20px;
         font-size: 0.8rem;
@@ -513,7 +551,8 @@
         .skills-awards,
         .two-column,
         .five-works-grid,
-        .video-works-grid {
+        .video-works-grid,
+        .text-works-grid {
           grid-template-columns: 1fr;
         }
 
@@ -586,10 +625,7 @@
         <div class="about-section">
           <div class="about-avatar">
             <!-- 替换为你的个人照片（建议正方形图片） -->
-            <img
-              src="https://i.ibb.co/PGfjZxz7/1-1.jpg"
-              alt="卢超凡个人照片"
-            />
+            <img src="https://i.ibb.co/PGfjZxz7/1-1.jpg" alt="卢超凡个人照片" />
           </div>
           <div class="about-content">
             <h2>卢超凡</h2>
@@ -620,10 +656,10 @@
               <p>
                 核心课程：语言学概论、现代汉语、古代汉语、中国古代/现当代文学、外国文学
               </p>
-               <p> GPA：4.0/5.0</p>
+              <p>GPA：4.0/5.0</p>
               <ul>
                 <li>国家三等奖学金、文化艺术单项奖</li>
-                 <li>校级五四青年学生奖（文体先锋提名奖）</li>
+                <li>校级五四青年学生奖（文体先锋提名奖）</li>
                 <li>2025年度大学生创新训练计划国家级推荐</li>
               </ul>
             </div>
@@ -791,16 +827,30 @@
                   >：中国大学生计算机设计大赛江苏省优胜奖
                 </div>
               </div>
+              <!-- 论文录用1：查看文档换行 -->
               <div class="award-item">
                 <span class="award-icon">📄</span>
                 <div class="award-content">
-                  论文录用：《大语言模型英诗汉译能力测评研究》（国家级学术研讨会）
+                  论文录用：《大语言模型英诗汉译能力测评研究》（国家级学术研讨会）<br />
+                  <a
+                    href="https://www.kdocs.cn/l/caV5r6k9ZbvN"
+                    target="_blank"
+                    style="color: #3498db"
+                    >查看文档</a
+                  >
                 </div>
               </div>
+              <!-- 论文录用2：查看文档换行 -->
               <div class="award-item">
                 <span class="award-icon">📄</span>
                 <div class="award-content">
-                  论文录用：《大模型英诗汉译生成与评估应用体系研究》（国际会议）
+                  论文录用：《大模型英诗汉译生成与评估应用体系研究》（国际会议）<br />
+                  <a
+                    href="https://www.kdocs.cn/l/cqQatkCAW9aq"
+                    target="_blank"
+                    style="color: #3498db"
+                    >查看文档</a
+                  >
                 </div>
               </div>
             </div>
@@ -813,6 +863,89 @@
     <section id="works" class="section works-section">
       <div class="container">
         <h2 class="section-title">作品集</h2>
+
+        <!-- 文字作品板块：精简小卡片、无图标、标题下直接链接 -->
+        <div class="works-category">
+          <h3 class="category-title">文字作品</h3>
+          <div class="text-works-grid">
+            <!-- 文字作品1 -->
+            <div class="text-card">
+              <div class="text-content">
+                <h3 class="text-title">总有星星不会熄灭（短篇小说）</h3>
+                <a
+                  href="https://www.kdocs.cn/l/cvPDgevmCNFy"
+                  target="_blank"
+                  class="link-btn"
+                  >查看全文</a
+                >
+              </div>
+            </div>
+            <!-- 文字作品2 -->
+            <div class="text-card">
+              <div class="text-content">
+                <h3 class="text-title">假如大雪封门（短篇小说）</h3>
+                <a
+                  href="https://www.kdocs.cn/l/ce8MCx2DFnBi"
+                  target="_blank"
+                  class="link-btn"
+                  >查看全文</a
+                >
+              </div>
+            </div>
+            <!-- 文字作品3 -->
+            <div class="text-card">
+              <div class="text-content">
+                <h3 class="text-title">善恶不分（短篇小说）</h3>
+                <a
+                  href="https://www.kdocs.cn/l/ckasKoseZhN7"
+                  target="_blank"
+                  class="link-btn"
+                  >查看全文</a
+                >
+              </div>
+            </div>
+            <!-- 文字作品4 -->
+            <div class="text-card">
+              <div class="text-content">
+                <h3 class="text-title">
+                  《直溪》——一场跨越时空的幻梦（文学赏析）
+                </h3>
+                <a
+                  href="https://www.kdocs.cn/l/clkJp0JWY6To"
+                  target="_blank"
+                  class="link-btn"
+                  >查看全文</a
+                >
+              </div>
+            </div>
+            <!-- 文字作品5 -->
+            <div class="text-card">
+              <div class="text-content">
+                <h3 class="text-title">
+                  俄罗斯莫斯科州音乐厅遭遇严重安全挑战（消息评论）
+                </h3>
+                <a
+                  href="https://www.kdocs.cn/l/clqUbGf9J41Q"
+                  target="_blank"
+                  class="link-btn"
+                  >查看全文</a
+                >
+              </div>
+            </div>
+            <!-- 文字作品6 -->
+            <div class="text-card">
+              <div class="text-content">
+                <h3 class="text-title">论存在主义（杂文）</h3>
+                <a
+                  href="https://www.kdocs.cn/l/cp4pnqduu5OV"
+                  target="_blank"
+                  class="link-btn"
+                  >查看全文</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
 
         <!-- 公众号作品（1个：单栏居中） -->
         <div class="works-category">
@@ -877,10 +1010,7 @@
             </div>
             <div class="work-card">
               <div class="work-img">
-                <img
-                  src="https://i.ibb.co/0VtvdMr3/image.jpg"
-                  alt="村上隆"
-                />
+                <img src="https://i.ibb.co/0VtvdMr3/image.jpg" alt="村上隆" />
               </div>
               <div class="work-content">
                 <h3 class="work-title">将艺术拉下圣坛的艺术家——村上隆</h3>
@@ -902,10 +1032,7 @@
             </div>
             <div class="work-card">
               <div class="work-img">
-                <img
-                  src="https://i.ibb.co/zVf6bGGb/image.jpg"
-                  alt="芭比"
-                />
+                <img src="https://i.ibb.co/zVf6bGGb/image.jpg" alt="芭比" />
               </div>
               <div class="work-content">
                 <h3 class="work-title">《芭比》——对男权社会的辛辣讽刺</h3>
@@ -952,10 +1079,7 @@
             </div>
             <div class="work-card">
               <div class="work-img">
-                <img
-                  src="https://i.ibb.co/mCPJbLZd/image.jpg"
-                  alt="夏日降温"
-                />
+                <img src="https://i.ibb.co/mCPJbLZd/image.jpg" alt="夏日降温" />
               </div>
               <div class="work-content">
                 <h3 class="work-title">创意广告|夏日降温方式图鉴</h3>
@@ -1037,10 +1161,7 @@
             <!-- 第3个视频 -->
             <div class="video-card">
               <div class="video-container">
-                <video
-                  controls
-                  poster="https://i.ibb.co/mC4PNQJs/30s.jpg"
-                >
+                <video controls poster="https://i.ibb.co/mC4PNQJs/30s.jpg">
                   <source
                     src="https://file.icve.com.cn/file_doc/qdqqd/7671768185823655.mp4"
                     type="video/mp4"
@@ -1086,7 +1207,7 @@
                 </div>
               </div>
             </div>
-            <!-- 第5个视频（取消full-width，和其他视频同尺寸） -->
+            <!-- 第5个视频 -->
             <div class="video-card">
               <div class="video-container">
                 <video
@@ -1112,13 +1233,10 @@
                 </div>
               </div>
             </div>
-            <!-- 第6个视频（取消full-width，和其他视频同尺寸） -->
+            <!-- 第6个视频 -->
             <div class="video-card">
               <div class="video-container">
-                <video
-                  controls
-                  poster="https://i.ibb.co/FbTsP2FS/1.jpg"
-                >
+                <video controls poster="https://i.ibb.co/FbTsP2FS/1.jpg">
                   <source
                     src="https://file.icve.com.cn/file_doc/qdqqd/4591770275454181.mp4"
                     type="video/mp4"
